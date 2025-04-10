@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/isaraqsan/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/isaraqsan/Library/Mobile Documents/com~apple~CloudDocs/dev_vespa/vespa_app"
+export "FLUTTER_APPLICATION_PATH=/Users/isaraqsan/dev_vespa/vespa_app"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"

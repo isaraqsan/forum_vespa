@@ -12,8 +12,17 @@ class ProfileView extends StatelessWidget {
         children: [
           Container(
             margin: const EdgeInsets.only(top: 30),
-            color: ColorPalette.primary,
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF3B9447), // Hijau tua
+                  Color.fromARGB(255, 148, 235, 154), // Biru muda
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
             child: Row(
               children: [
                 const CircleAvatar(

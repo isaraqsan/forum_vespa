@@ -4,6 +4,7 @@ import 'package:vespa_app/core/app/color_palette.dart';
 import 'package:vespa_app/core/util/size_config.dart';
 import 'package:vespa_app/presentations/add/view/add_view.dart';
 import 'package:vespa_app/presentations/dashboard/controller/dashboard_controller.dart';
+import 'package:vespa_app/presentations/message/view/message_view.dart';
 import 'package:vespa_app/presentations/profile/view/profile_view.dart';
 import 'package:vespa_app/presentations/search/view/search_view.dart';
 
@@ -44,8 +45,7 @@ class Dashboard extends StatelessWidget {
                     case DashboardType.Add:
                       return AddView();
                     case DashboardType.Message:
-                      // return MessageView();
-                      return Container();
+                      return MessageView();
                     case DashboardType.Profile:
                       return ProfileView();
                     // return Container();

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:readmore/readmore.dart';
 import 'package:vespa_app/core/app/color_palette.dart';
 import 'package:vespa_app/presentations/dashboard/view/dashboard.dart';
 import 'package:vespa_app/presentations/home/controller/home_controller.dart';
@@ -7,159 +9,6 @@ import 'package:intl/intl.dart';
 
 class HomeView extends GetView<HomeController> {
   HomeView({super.key});
-
-  final List<Map<String, dynamic>> dummyPosts = [
-    {
-      'username': '@codingbro',
-      'name': 'Rizky H',
-      'profilePic': 'https://i.pravatar.cc/150?img=12',
-      'content':
-          'Belajar Flutter enak banget, tapi state management suka bikin mumet 😂',
-      'timestamp': DateTime.now().subtract(Duration(minutes: 5)),
-      'likes': 12,
-      'comments': 5,
-    },
-    {
-      'username': '@flutterqueen',
-      'name': 'Ayu Devina',
-      'profilePic': 'https://i.pravatar.cc/150?img=30',
-      'content':
-          'Hari ini berhasil bikin dark mode toggle pakai GetX! ✨ #FlutterDev',
-      'timestamp': DateTime.now().subtract(Duration(hours: 1, minutes: 23)),
-      'likes': 25,
-      'comments': 8,
-    },
-    {
-      'username': '@bughunter',
-      'name': 'Andi D.',
-      'profilePic': 'https://i.pravatar.cc/150?img=40',
-      'content':
-          'Kenapa ya padding nggak ngefek padahal udah dibungkus Container 😵‍💫',
-      'timestamp': DateTime.now().subtract(Duration(hours: 3, minutes: 47)),
-      'likes': 7,
-      'comments': 3,
-    },
-    {
-      'username': '@codingbro',
-      'name': 'Rizky H',
-      'profilePic': 'https://i.pravatar.cc/150?img=12',
-      'content':
-          'Belajar Flutter enak banget, tapi state management suka bikin mumet 😂',
-      'timestamp': DateTime.now().subtract(Duration(minutes: 5)),
-      'likes': 12,
-      'comments': 5,
-    },
-    {
-      'username': '@flutterqueen',
-      'name': 'Ayu Devina',
-      'profilePic': 'https://i.pravatar.cc/150?img=30',
-      'content':
-          'Hari ini berhasil bikin dark mode toggle pakai GetX! ✨ #FlutterDev',
-      'timestamp': DateTime.now().subtract(Duration(hours: 1, minutes: 23)),
-      'likes': 25,
-      'comments': 8,
-    },
-    {
-      'username': '@bughunter',
-      'name': 'Andi D.',
-      'profilePic': 'https://i.pravatar.cc/150?img=40',
-      'content':
-          'Kenapa ya padding nggak ngefek padahal udah dibungkus Container 😵‍💫',
-      'timestamp': DateTime.now().subtract(Duration(hours: 3, minutes: 47)),
-      'likes': 7,
-      'comments': 3,
-    },
-    {
-      'username': '@codingbro',
-      'name': 'Rizky H',
-      'profilePic': 'https://i.pravatar.cc/150?img=12',
-      'content':
-          'Belajar Flutter enak banget, tapi state management suka bikin mumet 😂',
-      'timestamp': DateTime.now().subtract(Duration(minutes: 5)),
-      'likes': 12,
-      'comments': 5,
-    },
-    {
-      'username': '@flutterqueen',
-      'name': 'Ayu Devina',
-      'profilePic': 'https://i.pravatar.cc/150?img=30',
-      'content':
-          'Hari ini berhasil bikin dark mode toggle pakai GetX! ✨ #FlutterDev',
-      'timestamp': DateTime.now().subtract(Duration(hours: 1, minutes: 23)),
-      'likes': 25,
-      'comments': 8,
-    },
-    {
-      'username': '@bughunter',
-      'name': 'Andi D.',
-      'profilePic': 'https://i.pravatar.cc/150?img=40',
-      'content':
-          'Kenapa ya padding nggak ngefek padahal udah dibungkus Container 😵‍💫',
-      'timestamp': DateTime.now().subtract(Duration(hours: 3, minutes: 47)),
-      'likes': 7,
-      'comments': 3,
-    },
-    {
-      'username': '@codingbro',
-      'name': 'Rizky H',
-      'profilePic': 'https://i.pravatar.cc/150?img=12',
-      'content':
-          'Belajar Flutter enak banget, tapi state management suka bikin mumet 😂',
-      'timestamp': DateTime.now().subtract(Duration(minutes: 5)),
-      'likes': 12,
-      'comments': 5,
-    },
-    {
-      'username': '@flutterqueen',
-      'name': 'Ayu Devina',
-      'profilePic': 'https://i.pravatar.cc/150?img=30',
-      'content':
-          'Hari ini berhasil bikin dark mode toggle pakai GetX! ✨ #FlutterDev',
-      'timestamp': DateTime.now().subtract(Duration(hours: 1, minutes: 23)),
-      'likes': 25,
-      'comments': 8,
-    },
-    {
-      'username': '@bughunter',
-      'name': 'Andi D.',
-      'profilePic': 'https://i.pravatar.cc/150?img=40',
-      'content':
-          'Kenapa ya padding nggak ngefek padahal udah dibungkus Container 😵‍💫',
-      'timestamp': DateTime.now().subtract(Duration(hours: 3, minutes: 47)),
-      'likes': 7,
-      'comments': 3,
-    },
-    {
-      'username': '@codingbro',
-      'name': 'Rizky H',
-      'profilePic': 'https://i.pravatar.cc/150?img=12',
-      'content':
-          'Belajar Flutter enak banget, tapi state management suka bikin mumet 😂',
-      'timestamp': DateTime.now().subtract(Duration(minutes: 5)),
-      'likes': 12,
-      'comments': 5,
-    },
-    {
-      'username': '@flutterqueen',
-      'name': 'Ayu Devina',
-      'profilePic': 'https://i.pravatar.cc/150?img=30',
-      'content':
-          'Hari ini berhasil bikin dark mode toggle pakai GetX! ✨ #FlutterDev',
-      'timestamp': DateTime.now().subtract(Duration(hours: 1, minutes: 23)),
-      'likes': 25,
-      'comments': 8,
-    },
-    {
-      'username': '@bughunter',
-      'name': 'Andi D.',
-      'profilePic': 'https://i.pravatar.cc/150?img=40',
-      'content':
-          'Kenapa ya padding nggak ngefek padahal udah dibungkus Container 😵‍💫',
-      'timestamp': DateTime.now().subtract(Duration(hours: 3, minutes: 47)),
-      'likes': 7,
-      'comments': 3,
-    },
-  ];
 
   String timeAgo(DateTime date) {
     final now = DateTime.now();
@@ -172,85 +21,155 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorPalette.white,
-      appBar: AppBar(
-        title: GestureDetector(
-          onTap: () {
-            // Navigasi ke HomeView saat "Forum" diklik
-            Get.offAll(() => Dashboard());
-          },
-          child: const Text(
-            'Forum',
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
-        backgroundColor: ColorPalette.primary,
-        elevation: 1,
-      ),
-      body: ListView.builder(
-        itemCount: dummyPosts.length,
-        itemBuilder: (context, index) {
-          final post = dummyPosts[index];
+    return GetBuilder<HomeController>(
+      init: HomeController(), // pastikan controller diinisialisasi
+      builder: (controller) {
+        return controller.obx((state) {
+          return Scaffold(
+            backgroundColor: ColorPalette.white,
+            appBar: AppBar(
+              title: GestureDetector(
+                onTap: () {
+                  Get.offAll(() => Dashboard());
+                },
+                child: const Text(
+                  'Forum',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
+              backgroundColor: ColorPalette.primary,
+              elevation: 1,
+            ),
+            body: ListView.builder(
+              controller: controller.scrollController,
+              itemCount: state!.length,
+              itemBuilder: (context, index) {
+                // final post = state[index];
+                final imageData = state[index].pathImage;
+                if (index == state.length) {
+                  return controller.hasNextPage
+                      ? const Center(child: CircularProgressIndicator())
+                      : const SizedBox.shrink();
+                }
 
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Avatar
-                CircleAvatar(
-                  radius: 24,
-                  backgroundImage: NetworkImage(post['profilePic']),
-                ),
-                const SizedBox(width: 12),
-                // Post content
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Username & Time
-                      Row(
+                final item = state[index];
+
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(post['name'],
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold)),
-                          const SizedBox(width: 5),
-                          Text(
-                            post['username'],
-                            style: TextStyle(color: Colors.grey[600]),
+                          CircleAvatar(
+                            radius: 24,
+                            backgroundImage: state[index].author.imageFoto !=
+                                        null &&
+                                    state[index].author.imageFoto!.isNotEmpty
+                                ? NetworkImage(
+                                    'https://api-jarimuawasipemilu.bawaslu.go.id/${state[index].author.imageFoto!}')
+                                : const AssetImage(
+                                        'assets/images/default-person.png')
+                                    as ImageProvider,
                           ),
-                          const SizedBox(width: 5),
-                          Text('· ${timeAgo(post['timestamp'])}',
-                              style: TextStyle(color: Colors.grey[600])),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(state[index].author.fullName ?? '',
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold)),
+                                    const SizedBox(width: 5),
+                                    Text(
+                                        '· ${timeAgo(state[index].createdDate)}',
+                                        style:
+                                            TextStyle(color: Colors.grey[600])),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
+
+                                /// 👇 InkWell hanya membungkus konten deskripsi & gambar
+                                InkWell(
+                                  onTap: () => controller
+                                      .goToArticleDetail(state[index].slug),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ReadMoreText(
+                                        state[index].description ?? '',
+                                        trimLines: 5,
+                                        colorClickableText: Colors.blue,
+                                        trimMode: TrimMode.Line,
+                                        trimCollapsedText: 'Lihat lainnya',
+                                        trimExpandedText: 'Lihat lebih sedikit',
+                                        style: const TextStyle(
+                                            color: Colors.black),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      if ((imageData ?? '').isNotEmpty) ...[
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          child: Image.network(
+                                            'https://api-jarimuawasipemilu.bawaslu.go.id/$imageData',
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ],
+                                    ],
+                                  ),
+                                ),
+
+                                const SizedBox(height: 8),
+
+                                /// 👇 Like dan Comment tidak berada dalam InkWell
+                                Row(
+                                  children: [
+                                    Icon(Icons.favorite_border,
+                                        size: 18, color: Colors.grey[700]),
+                                    const SizedBox(width: 4),
+                                    Text('${state[index].counterLike}'),
+                                    const SizedBox(width: 16),
+                                    GestureDetector(
+                                      onTap: () => controller
+                                          .goToArticleDetail(state[index].slug),
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.comment_outlined,
+                                              size: 18,
+                                              color: Colors.grey[700]),
+                                          const SizedBox(width: 4),
+                                          Text(
+                                              '${state[index].counterComment}'),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
-                      const SizedBox(height: 4),
-                      // Content
-                      Text(post['content']),
-                      const SizedBox(height: 8),
-                      // Actions
-                      Row(
-                        children: [
-                          Icon(Icons.favorite_border,
-                              size: 18, color: Colors.grey[700]),
-                          const SizedBox(width: 4),
-                          Text('${post['likes']}'),
-                          const SizedBox(width: 16),
-                          Icon(Icons.comment_outlined,
-                              size: 18, color: Colors.grey[700]),
-                          const SizedBox(width: 4),
-                          Text('${post['comments']}'),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                    ),
+                    Divider(
+                      color: Colors.grey[300],
+                      thickness: 1,
+                      height: 1,
+                    ),
+                  ],
+                );
+              },
             ),
           );
-        },
-      ),
+        });
+      },
     );
   }
 }

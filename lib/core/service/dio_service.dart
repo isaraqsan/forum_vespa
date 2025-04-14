@@ -95,8 +95,11 @@ class DioService extends getx.GetxService {
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     CoreFunction.logPrint("============= onRequest =============", "");
-    if (AuthService.token.isNotEmpty)
-      options.headers['X-Authorization'] = "Bearer " + AuthService.token;
+
+    if (AuthService.token.isNotEmpty) {
+      options.headers['Authorization'] = "Bearer ${AuthService.token}";
+    }
+
     return handler.next(options);
   }
 

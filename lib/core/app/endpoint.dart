@@ -1,12 +1,12 @@
 class Endpoint {
   //? Auth
-  static const authLogin = "auth/login";
-  static const authLogout = "auth/logout";
+  static const authLogin = "/auth/login";
+  static const authLogout = "/auth/logout";
 
   //? User
-  static const userAttendance = "user/attendance";
-  static const userRequestAbsence = "user/request_absence";
-  static const userProfile = "user/profile";
+  static const testing = "/reff/bentuk-kerjasama/all-data";
+  static const artcileFe = "/fe/article";
+  static const detailArticle = "/forum/article/";
   static const userHistory = "user/history";
   static const userAbsenceHistory = "user/absence_history";
   static const userOvertimeCheck = "user/overtime";
@@ -57,7 +57,8 @@ class Endpoint {
   static const testingTerminationRequestList = "testing/request_list";
   static const testingTerminationRequestApprove = "testing/request_approve";
   static const testingTerminationRequestBatal = "testing/request_batal";
-  static const testingTerminationhistoryTechnician = "testing/technician_history";
+  static const testingTerminationhistoryTechnician =
+      "testing/technician_history";
   static const testingTerminationRequestEndTechnician = "testing/request_end";
   static const testingTerminationType = "testing/type";
 
@@ -102,5 +103,6 @@ class Endpoint {
   static const healthSafetyEnvironmentMaster = "hse/master";
   static const healthSafetyEnvironmentApprove = "hse/request_approve";
   static const healthSafetyEnvironmentHandOver = "hse/serah_terima";
-  static const healthSafetyEnvironmentRequestExtension = "hse/request_perpanjangan";
+  static const healthSafetyEnvironmentRequestExtension =
+      "hse/request_perpanjangan";
 }

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:vespa_app/core/app/database_key.dart';
 import 'package:vespa_app/core/service/database_service.dart';
+import 'package:vespa_app/core/util/core_function.dart';
 import 'package:vespa_app/presentations/profile/model/profile_entity.dart';
 
 class AuthService {
@@ -44,9 +45,16 @@ class AuthService {
   }
 
   getToken() {
-    if (_databaseService.hasData(Databasekey.token) && _databaseService.hasData(Databasekey.profile)) {
+    print('DatabaseService token: ${_databaseService.read(Databasekey.token)}');
+    CoreFunction.logPrint(
+        'DatabaseService token: ', _databaseService.read(Databasekey.token));
+    print(
+        'DatabaseService profile: ${_databaseService.read(Databasekey.profile)}');
+    if (_databaseService.hasData(Databasekey.token) &&
+        _databaseService.hasData(Databasekey.profile)) {
       var token = _databaseService.read(Databasekey.token);
-      var profile = ProfileEntity.fromJson(jsonDecode(jsonEncode(_databaseService.read(Databasekey.profile)!)));
+      var profile = ProfileEntity.fromJson(
+          jsonDecode(jsonEncode(_databaseService.read(Databasekey.profile)!)));
       if (token != null && profile.empName != null) {
         _token = token;
         _name = profile.empName ?? "";
@@ -56,6 +64,8 @@ class AuthService {
       _token = "";
       _isLogin = false;
     }
+
+    print("AuthService.token (inside getToken): $_token");
   }
 
   deleteToken() async {

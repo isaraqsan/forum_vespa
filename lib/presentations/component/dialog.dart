@@ -16,6 +16,7 @@ import 'package:vespa_app/presentations/component/jumping_dots.dart';
 // import 'package:vespa_app/presentations/transport/controller/transport_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:vespa_app/presentations/login/view/login_view.dart';
 
 class ComponentDialog {
   // final inventoryDetailController = Get.find<InventoryDetailController>();
@@ -35,7 +36,8 @@ class ComponentDialog {
               const SizedBox(
                 height: 20,
               ),
-              Component.textBold("sedang memproses...", fontSize: 12, colors: ColorPalette.blackText)
+              Component.textBold("sedang memproses...",
+                  fontSize: 12, colors: ColorPalette.blackText)
             ],
           ),
         ),
@@ -59,7 +61,8 @@ class ComponentDialog {
             const SizedBox(
               height: 20,
             ),
-            Component.textBold("sukses menyimpan data", fontSize: 12, colors: ColorPalette.green2)
+            Component.textBold("sukses menyimpan data",
+                fontSize: 12, colors: ColorPalette.green2)
           ],
         ),
       ),
@@ -89,7 +92,8 @@ class ComponentDialog {
               const SizedBox(
                 height: 10,
               ),
-              Component.textBold("Apakah anda yakin untuk keluar ?", textAlign: TextAlign.center),
+              Component.textBold("Apakah anda yakin untuk keluar ?",
+                  textAlign: TextAlign.center),
               const SizedBox(
                 height: 30,
               ),
@@ -101,9 +105,12 @@ class ComponentDialog {
                       onTap: () => Get.back(result: false),
                       child: Container(
                         alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                        decoration: Component.shadow(color: ColorPalette.primary),
-                        child: Component.textDefault("Tidak", colors: ColorPalette.white),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 20),
+                        decoration:
+                            Component.shadow(color: ColorPalette.primary),
+                        child: Component.textDefault("Tidak",
+                            colors: ColorPalette.white),
                       ),
                     ),
                   ),
@@ -117,9 +124,11 @@ class ComponentDialog {
                       onTap: () => Get.back(result: true),
                       child: Container(
                         alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 20),
                         decoration: Component.shadow(color: ColorPalette.red),
-                        child: Component.textDefault("Ya", colors: ColorPalette.white),
+                        child: Component.textDefault("Ya",
+                            colors: ColorPalette.white),
                       ),
                     ),
                   )
@@ -132,7 +141,8 @@ class ComponentDialog {
     ).then((value) => value);
   }
 
-  static Future<String?> datePicker({DateTime? minDate, String format = Constant.dateFormat}) async {
+  static Future<String?> datePicker(
+      {DateTime? minDate, String format = Constant.dateFormat}) async {
     String? _selectedDate;
     return Get.dialog(
       Dialog(
@@ -155,10 +165,12 @@ class ComponentDialog {
                   String _range = '';
                   String _rangeCount = '';
                   if (args.value is PickerDateRange) {
-                    _range = '${DateFormat(format).format(args.value.startDate)} -'
+                    _range =
+                        '${DateFormat(format).format(args.value.startDate)} -'
                         ' ${DateFormat(format).format(args.value.endDate ?? args.value.startDate)}';
                   } else if (args.value is DateTime) {
-                    _selectedDate = DateFormat(format).format(DateTime.parse(args.value.toString()));
+                    _selectedDate = DateFormat(format)
+                        .format(DateTime.parse(args.value.toString()));
                   } else if (args.value is List<DateTime>) {
                     _dateCount = args.value.length.toString();
                   } else {
@@ -185,7 +197,10 @@ class ComponentDialog {
                       //   color: ColorPalette.primary
                       // )
                       ),
-                  child: Component.textDefault("Pilih", colors: ColorPalette.white, textAlign: TextAlign.center, fontSize: 12),
+                  child: Component.textDefault("Pilih",
+                      colors: ColorPalette.white,
+                      textAlign: TextAlign.center,
+                      fontSize: 12),
                 ),
               )
             ],
@@ -235,7 +250,8 @@ class ComponentDialog {
               const SizedBox(
                 height: 10,
               ),
-              Component.textBold("Please disable developer mode!", textAlign: TextAlign.center),
+              Component.textBold("Please disable developer mode!",
+                  textAlign: TextAlign.center),
               const SizedBox(
                 height: 30,
               ),
@@ -246,9 +262,11 @@ class ComponentDialog {
                     onTap: () => SystemNavigator.pop(),
                     child: Container(
                       alignment: Alignment.center,
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       decoration: Component.shadow(color: ColorPalette.primary),
-                      child: Component.textDefault("OK", colors: ColorPalette.white),
+                      child: Component.textDefault("OK",
+                          colors: ColorPalette.white),
                     ),
                   ),
                 ],
@@ -274,7 +292,8 @@ class ComponentDialog {
                 const SizedBox(
                   height: 10,
                 ),
-                Component.textBold("Dont change your date and time", textAlign: TextAlign.center),
+                Component.textBold("Dont change your date and time",
+                    textAlign: TextAlign.center),
                 const SizedBox(
                   height: 30,
                 ),
@@ -285,9 +304,12 @@ class ComponentDialog {
                       onTap: () => Get.back(result: true),
                       child: Container(
                         alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                        decoration: Component.shadow(color: ColorPalette.primary),
-                        child: Component.textDefault("OK", colors: ColorPalette.white),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        decoration:
+                            Component.shadow(color: ColorPalette.primary),
+                        child: Component.textDefault("OK",
+                            colors: ColorPalette.white),
                       ),
                     ),
                   ],
@@ -297,6 +319,86 @@ class ComponentDialog {
           ),
         ),
         barrierDismissible: false);
+  }
+
+  static Future<void> requireLoginDialog() async {
+    await Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 24),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: ColorPalette.red.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                padding: const EdgeInsets.all(16),
+                child: const Icon(Icons.lock_outline_rounded,
+                    size: 48, color: ColorPalette.red),
+              ),
+              const SizedBox(height: 20),
+              Component.textBold(
+                "Akses Terbatas",
+                fontSize: 16,
+                textAlign: TextAlign.center,
+                colors: ColorPalette.blackText,
+              ),
+              const SizedBox(height: 10),
+              Component.textDefault(
+                "Silakan login untuk melihat detail konten ini.",
+                fontSize: 13,
+                colors: ColorPalette.grey,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 30),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorPalette.grey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                      onPressed: () => Get.back(), // Close dialog
+                      child: Component.textDefault("Nanti Saja",
+                          colors: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorPalette.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                      onPressed: () {
+                        Get.back(); // Close dialog
+                        Get.to(() => LoginView(),
+                            transition: Transition.fade,
+                            duration: const Duration(milliseconds: 400));
+                      },
+                      child:
+                          Component.textDefault("Login", colors: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+      barrierDismissible: false,
+    );
   }
 
   // static Future<bool?> onApproval() {
@@ -500,7 +602,9 @@ class ComponentDialog {
                 const SizedBox(
                   height: 10,
                 ),
-                Component.textBold("Anda harus melakukan absensi terlebih dahulu", textAlign: TextAlign.center),
+                Component.textBold(
+                    "Anda harus melakukan absensi terlebih dahulu",
+                    textAlign: TextAlign.center),
                 const SizedBox(
                   height: 30,
                 ),
@@ -511,9 +615,12 @@ class ComponentDialog {
                       onTap: () => Get.back(result: true),
                       child: Container(
                         alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                        decoration: Component.shadow(color: ColorPalette.primary),
-                        child: Component.textDefault("OK", colors: ColorPalette.white),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        decoration:
+                            Component.shadow(color: ColorPalette.primary),
+                        child: Component.textDefault("OK",
+                            colors: ColorPalette.white),
                       ),
                     ),
                   ],

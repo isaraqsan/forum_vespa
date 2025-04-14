@@ -15,6 +15,7 @@ import 'package:vespa_app/presentations/splashscreen/view/splashscreen_view.dart
 import 'presentations/component/component.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await initServices();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -33,8 +34,8 @@ Future<void> initServices() async {
     systemNavigationBarIconBrightness: Brightness.dark,
   ));
   initializeDateFormatting(AppConfig.dateLocale);
-  WidgetsFlutterBinding.ensureInitialized();
-  // await Get.putAsync<EnvService>(() => EnvService().init(), permanent: true);
+
+  await Get.putAsync<EnvService>(() => EnvService().init(), permanent: true);
   await Get.putAsync<DatabaseService>(() => DatabaseService().init(),
       permanent: true);
   await Get.putAsync<DioService>(() => DioService().init(), permanent: true);
